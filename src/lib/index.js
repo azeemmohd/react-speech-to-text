@@ -1,8 +1,4 @@
-import Example from './components/Example';
-import SecondExample from './components/SecondExample';
+import ReactScribe from './components/ReactScribe';
 
-export default Example;
-export {
-  SecondExample
-};
+export default ReactScribe;
 

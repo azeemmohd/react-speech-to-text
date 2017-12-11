@@ -1,7 +1,7 @@
 {
-  "name": "create-react-library",
+  "name": "react-speech-to-text",
   "version": "1.0.0",
-  "description": "React NPM library starter kit based on Facebook's create react app",
+  "description": "React Component For Web Speech API",
   "main": "build/index.js",
   "scripts": {
     "start": "node scripts/start.js",
@@ -10,13 +10,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/udiliaInc/create-react-library.git"
+    "url": "git+https://github.com/azeemmohd/react-speech-to-text.git"
   },
-  "author": "Dimitri Mikadze <dimitri@udilia.com>",
-  "bugs": {
-    "url": "https://github.com/udiliaInc/create-react-library/issues"
-  },
-  "homepage": "https://github.com/udiliaInc/create-react-library#readme",
+  "author": "Azeem Mohammad <azeemmohd@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "7.1.2",
