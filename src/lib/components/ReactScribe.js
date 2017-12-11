@@ -251,7 +251,7 @@ class ReactScribe extends Component {
       <div className="App">
         <h3 className="center" id="headline">
           <a href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
-            Adobe Connect <br /> Live Audio Transcription Demo
+          Live Audio Transcription Demo
           </a>{" "}
         </h3>
         <div id="info">
