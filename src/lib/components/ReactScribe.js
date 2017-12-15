@@ -3,6 +3,7 @@ import "./App.css";
 import mic from "./mic.gif";
 import micAnimate from "./mic-animate.gif";
 import micSlash from "./mic-slash.gif";
+import leviosa from "./leviosa.gif";
 
 class ReactScribe extends Component {
   constructor() {
@@ -189,9 +190,46 @@ class ReactScribe extends Component {
     final_transcript_temp = this.linebreak(final_transcript_temp);
     interim_transcript_temp = this.linebreak(interim_transcript_temp);
 
+    if (final_transcript_temp.toLowerCase().includes("change background to green")) {
+      var MyApp = document.getElementById("MyApp");
+      MyApp.style.backgroundColor = "green";
+    }
+    else if (final_transcript_temp.toLowerCase().includes("change background to blue")) {
+      var MyApp = document.getElementById("MyApp");
+      MyApp.style.backgroundColor = "blue";
+    }
+     else if (final_transcript_temp.toLowerCase().includes("change background to purple")) {
+      var MyApp = document.getElementById("MyApp");
+      MyApp.style.backgroundColor = "purple";
+    }
+    else if (final_transcript_temp.toLowerCase().includes("change background to pink")) {
+      var MyApp = document.getElementById("MyApp");
+      MyApp.style.backgroundColor = "pink";
+    }
+    else if (final_transcript_temp.toLowerCase().includes("open notes")) {
+      var notesPod = document.getElementById("notesPod");
+      notesPod.open = true;
+    }
+    else if (final_transcript_temp.toLowerCase().includes("close notes")) {
+      var notesPod = document.getElementById("notesPod");
+      notesPod.open = false;
+    }
+    else if (final_transcript_temp.toLowerCase().includes("wingardium leviosa")) {
+      var levi = document.getElementById("levi");
+      levi.hidden = false;
+    }
+    else if (final_transcript_temp.toLowerCase().includes("reset")) {
+      var notesPod = document.getElementById("notesPod");
+      notesPod.open = false;
+      var levi = document.getElementById("levi");
+      levi.hidden = true;
+    }
+
     this.setState(
       Object.assign(this.state, {
-        all_lines_spoken: this.state.all_lines_spoken.concat([final_transcript_temp]),
+        all_lines_spoken: this.state.all_lines_spoken.concat([
+          final_transcript_temp
+        ]),
         final_transcript: final_transcript_temp,
         interim_transcript: interim_transcript_temp
       })
@@ -203,12 +241,12 @@ class ReactScribe extends Component {
       this.recognition.stop();
       return;
     }
-    Object.assign(this.state, {final_transcript: "", interim_transcript:""});
+    Object.assign(this.state, { final_transcript: "", interim_transcript: "" });
     var select_dialect = document.getElementById("select_dialect");
     var start_img = document.getElementById("start_img");
     this.recognition.lang = "en-US";
     this.recognition.start();
-    Object.assign(this.state, {ignore_onend: false});
+    Object.assign(this.state, { ignore_onend: false });
     start_img.src = micSlash;
     this.showInfo("info_allow");
     this.start_timestamp = event.timeStamp;
@@ -248,10 +286,10 @@ class ReactScribe extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App" id="MyApp">
         <h3 className="center" id="headline">
           <a href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
-          Live Audio Transcription Demo
+            Webby
           </a>{" "}
         </h3>
         <div id="info">
@@ -300,10 +338,12 @@ class ReactScribe extends Component {
             {this.state.interim_transcript}
           </span>
           <p />
-          <p>
-            {this.state.all_lines_spoken}
-          </p>
+          <p>{this.state.all_lines_spoken}</p>
         </div>
+        <dialog id="notesPod" open={false}>
+          This could be a note pod. :)
+        </dialog>
+        <img id="levi" src={leviosa} alt="leviosa" hidden={true}/>
       </div>
     );
   }
